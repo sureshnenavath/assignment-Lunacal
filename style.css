@@ -52,6 +52,7 @@ body{
 .right-top{
     
     padding-bottom: 10px;
+    overflow: auto;
 }
 .right-bottom{
     overflow: auto;
