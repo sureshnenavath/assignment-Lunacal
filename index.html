@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Sample</title>
+</head>
+<body>
+    <div class="container">
+        <div class="left-page" style="color: white;">
+        </div>
+        <div class="right-page">
+                <div class="right-top borders right">
+                    <div class="r-top-buttons">
+                        <button class="buttons" onclick="fun1()">About Me</button>
+                        <button class="buttons" onclick="fun2()">Experience</button>
+                        <button class="buttons" onclick="fun3()">Recommended</button>
+                    </div>  
+                    <p id="para">Hi name is suresh I am a web developer.</p>
+                </div>
+            <hr class="line">
+            <div class="right-bottom borders right">
+                <div class="r-bottom-div"> 
+                    <div class="left-flex">
+                        <button class="r-bottom-left-but">Gallery</button>
+                    </div>
+                    <div class="right-flex">
+                        <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        <button id="addImg" class="addImg">+ ADD IMAGES</button>
+                        <button class="bor"><i class="fa-solid fa-arrow-left "></i></button>
+                        <button class="bor"><i class="fa-solid fa-arrow-right "></i></button>
+                    </div>
+                </div>
+                <div class="ImagesSection">
+                    <input type="image" src="https://picsum.photos/300/200" class="images" alt="image">
+                    <input type="image" src="https://picsum.photos/200/200" class="images" alt="image">
+                    <input type="image" src="https://picsum.photos/300/300" class="images" alt="image">
+                    
+                </div>
+            </div>
+            <hr class="line">
+            <script>
+                let arr = ["My name is Nenavath Suresh from Hyderabad.","Now I am a student persuing B.Tech Computer Science and Engineering","I have knowladge about building responsive websites in efficent manner"];
+                let paraId = document.getElementById("para");
+
+                function fun1(){
+                    document.getElementById("para").textContent = arr[0];
+                }
+                function fun2(){
+                    document.getElementById("para").textContent = arr[1];
+                }
+                function fun3(){
+                    document.getElementById("para").textContent = arr[2];
+                }
+
+        // Get the file input, button, and ImagesSection div elements
+        const fileInput = document.getElementById("fileInput");
+        const addImgButton = document.getElementById("addImg");
+        const imagesSection = document.querySelector(".ImagesSection");
+
+        // Listen for clicks on the addImg button
+        addImgButton.addEventListener("click", function() {
+            // Trigger the file input click event
+            fileInput.click();
+        });
+
+        // Listen for changes in the file input
+        fileInput.addEventListener("change", function(event) {
+        const file = event.target.files[0]; // Get the selected file
+
+            if (file) {
+                const reader = new FileReader();
+
+                // Load the image once the file is read
+                reader.onload = function(e) {
+                    // Create an image element
+                    const imgElement = document.createElement("img");
+                    imgElement.src = e.target.result; // Set the source to the file's data URL
+                    imgElement.alt = "Selected Image";
+                    imgElement.style.maxHeight = "90px"; // Optional: set a max width
+                    imgElement.style.maxWidth = "90px"; // Optional: set a max height
+                    imgElement.style.minHeight = "90px"; // Optional: set a max width
+                    imgElement.style.minWidth = "90px"; // Optional: set a max height
+                    imgElement.style.margin = "10px";
+                    imgElement.style.borderRadius = "10px";
+                    // Append the image to the ImagesSection div
+                    imagesSection.appendChild(imgElement);
+                };
+
+                // Read the file as a data URL
+                reader.readAsDataURL(file);
+            }
+        });
+
+        
+
+            </script>
+        </div>
+    </div>
+</body>
+</html>
